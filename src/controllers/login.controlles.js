@@ -11,9 +11,9 @@ const getLogin = async (req, res) => {
 
 const createLogin = async (req, res) => {
   try {
-    const { usuario, password, cargo } = req.body;
+    const { cop ,usuario, password, cargo } = req.body;
     const newLogin = await Login.create({
-        usuario, password, cargo
+       cop, usuario, password, cargo
     });
     res.json(newLogin);
   } catch (error) {
@@ -40,7 +40,7 @@ const deleteLogin = async (req, res) => {
 const updateLogin = async (req, res) => {
   try {
     const { id } = req.params;
-    const { usuario, password, cargo } = req.body;
+    const { cop,usuario, password, cargo } = req.body;
 
     const loginupdate = await Login.findByPk(id);
 
@@ -48,6 +48,7 @@ const updateLogin = async (req, res) => {
       return res.status(404).json({ message: "elemento no encontrado" });
     }
 
+    loginupdate.cop = cop;
     loginupdate.usuario = usuario;
     loginupdate.password = password;
     loginupdate.cargo = cargo;

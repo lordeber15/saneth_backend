@@ -7,6 +7,10 @@ const Login = sequelize.define("login", {
     primaryKey: true,
     autoIncrement: true,
   },
+  cop: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   usuario: {
     type: DataTypes.STRING,
     allowNull: false,
